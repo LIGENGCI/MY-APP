@@ -1,3 +1,6 @@
+/** 
+ * @author 李耕棋 <s1040704@mqjh.tw>
+ */
 import { Inter } from "next/font/google";
 import "./globals.css";
 import {Flowbite} from "flowbite-react";
@@ -11,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}
+      <body className={inter.className}>
       <Flowbite>
         {children}
       </Flowbite>
