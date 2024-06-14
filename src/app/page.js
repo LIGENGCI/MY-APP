@@ -5,6 +5,7 @@
 'use client';
 import { useState , useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Navbar, 
         NavbarBrand, 
         NavbarCollapse, 
@@ -20,31 +21,18 @@ import { Navbar,
         DarkThemeToggle
  } from "flowbite-react";
 import CustomCard from "@/app/components/Card";
-import { headers } from "next/headers";
 
 export default function Home() {
   const [items, setItems] = useState ([]);
-  const tokenUrl = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
-  const apiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/YunlinCounty';
 
   useEffect(() => {
-   const getToken = async() =>{
-   const clientId = process.env.TDX_CLIENT_ID;
-   const clientSecret = process.env.TDX_CLIENT_SECRET;
-
-   const tokenParams = new URLSearchParams();
-   tokenParams.append('grant_type','client_credentials');
-   tokenParams.append('client_id',clientId);
-   tokenParams.append('client_secret',clientSecret);
-   
-   const tokenResponse = await fetch (tokenUrl,{
-      method:'POST',
-      headers:{
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      body:tokenParams.toString()
-    });
-  };
+    async function fetchData(){
+      const response = await fetch('api/items');
+      const data = await response.json();
+      console.log(data);
+      setItems(data);
+    }
+    fetchData();
   },[]);
 
 
@@ -54,8 +42,8 @@ export default function Home() {
      <div className="container mx-auto">
        <Navbar fluid className="bg-cyan-800">
         <NavbarBrand as={Link} href="/">
-          <img src="https://www.yuntech.edu.tw/images/website_png/Group_640.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">小棋旅遊網</span>
+          <Image src="https://www.yuntech.edu.tw/images/website_png/Group_640.png"  className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo"  width="200" height="100" />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">雲林光觀景點</span>
         </NavbarBrand>
         <NavbarToggle />
        <NavbarCollapse>
@@ -78,11 +66,11 @@ export default function Home() {
        </div> 
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
-        <img src="\banner\banner-1.jpg" alt="..." />
-        <img src="\banner\小琉球2.jpg" alt="..." />
-        <img src="\banner\小琉球3.jpg" alt="..." />
-        <img src="\banner\小琉球4.jpg" alt="..." />
-        <img src="\banner\小琉球5.jpg" alt="..." />
+        <Image src="\banner\北港朝天宮-1.jpg" alt="..."  width="200" height="100"/>
+        <Image src="\banner\北港朝天宮-2.jpg" alt="..."  width="200" height="100"/>
+        <Image src="\banner\北港朝天宮-3.jpg" alt="..."  width="200" height="100"/>
+        <Image src="\banner\北港朝天宮-4.jpg" alt="..."  width="200" height="100"/>
+        <Image src="\banner\北港朝天宮-5.jpg" alt="..."  width="200" height="100"/>
       </Carousel>
     </div>
     <div className="bg-white py-16">
@@ -116,10 +104,10 @@ export default function Home() {
         )}
     </div>
 
-    <div class = "container mx-auto">
-        <div class = "grid grid-cols-1 md:grid-cols-4 gap-4 text-black">
-          { items.map(item =>
-            <CustomCard item={item}/>
+    <div className = "container mx-auto">
+        <div className = "grid grid-cols-1 md:grid-cols-4 gap-4 text-black">
+          { items.map( (item ,index) =>
+            <CustomCard item={item} key={index}/>
           )}
         </div>
     </div>
