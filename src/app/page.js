@@ -21,6 +21,7 @@ import { Navbar,
         DarkThemeToggle
  } from "flowbite-react";
 import CustomCard from "@/app/components/Card";
+import AutoSizeImage from "@/app/components/AutoSizeImage";
 
 export default function Home() {
   const [items, setItems] = useState ([]);
@@ -42,7 +43,7 @@ export default function Home() {
      <div className="container mx-auto">
        <Navbar fluid className="bg-cyan-800">
         <NavbarBrand as={Link} href="/">
-          <Image src="https://www.yuntech.edu.tw/images/website_png/Group_640.png"  className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo"  width="200" height="100" />
+          <Image src="https://www.yuntech.edu.tw/images/website_png/Group_640.png"  className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo"  width="200" height="200" />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">雲林光觀景點</span>
         </NavbarBrand>
         <NavbarToggle />
@@ -66,11 +67,11 @@ export default function Home() {
        </div> 
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
-        <Image src="\banner\北港朝天宮-1.jpg" alt="..."  width="200" height="100"/>
-        <Image src="\banner\北港朝天宮-2.jpg" alt="..."  width="200" height="100"/>
-        <Image src="\banner\北港朝天宮-3.jpg" alt="..."  width="200" height="100"/>
-        <Image src="\banner\北港朝天宮-4.jpg" alt="..."  width="200" height="100"/>
-        <Image src="\banner\北港朝天宮-5.jpg" alt="..."  width="200" height="100"/>
+        <Image src="/banner/北港朝天宮-1.jpg" alt="..."  width="900" height="200"/>
+        <Image src="/banner/北港朝天宮-2.jpg" alt="..."  width="900" height="200"/>
+        <Image src="/banner/北港朝天宮-3.jpg" alt="..."  width="900" height="200"/>
+        <Image src="/banner/北港朝天宮-4.jpg" alt="..."  width="900" height="200"/>
+        <Image src="/banner/北港朝天宮-5.jpg" alt="..."  width="900" height="200"/>
       </Carousel>
     </div>
     <div className="bg-white py-16">
@@ -83,7 +84,7 @@ export default function Home() {
       imgSrc={item.Picture.PictureUrl1}
 
     >
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> 
         {item.ScenicSpotName}
 
       </h5>

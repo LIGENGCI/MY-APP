@@ -3,6 +3,7 @@
  */
 
 import Image from "next/image";
+
 export default function CustomCard({item}){
     return(
         <div className = "border">
@@ -11,3 +12,5 @@ export default function CustomCard({item}){
         </div>
     )
 }
+
+
